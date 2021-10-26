@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>我是html</h1>
+    <button id="btn1">index</button>
+    <button id="btn2">about</button>
+    <button id="btn3">no-prerender</button>
+    <div id="purehtml-container"></div>
+
+    <div id="iframe"></div>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/require.js/2.3.6/require.js"></script>
+    <script src="./entry.js"></script>
+    <script>
+      $("#btn1").on("click", function () {
+        $("#iframe").html("");
+        let index = sessionStorage.getItem("index");
+        if (index) {
+          $("#iframe").html(index);
+          return;
+        }
+        $.ajax({
+          url: "/dist/about/index.html",
+          type: "GET",
+          success(res) {
+            $("#iframe").html(res);
+            sessionStorage.setItem("index", res);
+          },
+        });
+      });
+      $("#btn2").on("click", function () {
+        $("#iframe").html("");
+        let about = sessionStorage.getItem("about");
+        if (about) {
+          $("#iframe").html(about);
+          return;
+        }
+        $.ajax({
+          url: "/about.html",
+          type: "GET",
+          success(res) {
+            $("#iframe").html(res);
+            sessionStorage.setItem("about", res);
+          },
+        });
+      });
+      $("#btn3").on("click", function () {
+        $("#iframe").html("");
+        let no_prerender = sessionStorage.getItem("no-prerender");
+        if (no_prerender) {
+          $("#iframe").html(no_prerender);
+          return;
+        }
+        $.ajax({
+          url: "/dist2/index.html",
+          type: "GET",
+          success(res) {
+            $("#iframe").html(res);
+            sessionStorage.setItem("no-prerender", res);
+          },
+        });
+      });
+    </script>
+    <script>
+      window.parent.postMessage('我是来自子页面的消息', 'http://localhost:8080/#/about')
+    </script>
+  </body>
+</html>
