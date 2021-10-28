@@ -11,6 +11,7 @@ import 'core-js/stable/promise';
 import 'core-js/stable/symbol';
 import 'core-js/stable/string/starts-with';
 import 'core-js/web/url';
+import actions from './actions';
 Vue.config.productionTip = false
 
 Vue.use(ElementUI);
@@ -23,7 +24,10 @@ const app = [
     entry: '//localhost:10000',  // 默认会加载这个html，解析里面的js，动态的执行（子应用必须支持跨域） fetch
     container: '#vue',  // 容器名
     activeRule: '#/vue',  // 激活的路径
-    props: {a: 1}  // 传值
+    props: {
+      a: 1,
+      getGlobalState: actions.getGlobalState
+    }  // 传值
   },
   {
     name: 'reactapp',
@@ -33,10 +37,13 @@ const app = [
   },
   {
     name: 'webapp',
-    entry: '//127.0.0.1:5500/about.html',  // 默认会加载这个html，解析里面的js，动态的执行（子应用必须支持跨域） fetch
+    entry: '//127.0.0.1:3000/',  // 默认会加载这个html，解析里面的js，动态的执行（子应用必须支持跨域） fetch
     container: '#web',
     activeRule: '#/web',
-    props: {a: 1}
+    props: {
+      a: 1,
+      getGlobalState: actions.getGlobalState
+    }
   },
 ]
 
@@ -58,8 +65,11 @@ registerMicroApps(app, {
   },
 });  // 注册应用
 start({
-  prefetch: false  //  取消预加载
-  // sandbox: true
+  prefetch: false,  //  取消预加载
+  fetch(url, ...args) {
+    url = url + '?v=' + new Date();
+    return window.fetch(url, ...args)
+  }
 });  // 开启
 new Vue({
   router,

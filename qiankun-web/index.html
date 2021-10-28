@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="/index.css">
   </head>
   <body>
     <h1>我是html</h1>
@@ -16,7 +17,7 @@
     <div id="iframe"></div>
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
     <script src="https://cdn.bootcdn.net/ajax/libs/require.js/2.3.6/require.js"></script>
-    <script src="./entry.js"></script>
+    <script src="./entry.js" entry></script>
     <script>
       $("#btn1").on("click", function () {
         $("#iframe").html("");
@@ -66,9 +67,6 @@
           },
         });
       });
-    </script>
-    <script>
-      window.parent.postMessage('我是来自子页面的消息', 'http://localhost:8080/#/about')
     </script>
   </body>
 </html>

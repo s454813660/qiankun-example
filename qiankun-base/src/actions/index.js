@@ -1,11 +1,12 @@
 import { initGlobalState } from 'qiankun';
+import Vue from 'vue';
 
 
 export const initialState = {
   route: ''
 }
+console.log(initialState);
 const actions = initGlobalState(initialState);
-
 // 定义一个获取state的方法下发到子应用
 actions.getGlobalState = (key) => {
   // 有key，表示取globalState下的某个子级对象

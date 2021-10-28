@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
+import actions from './actions'
 import '@babel/polyfill';
 import 'whatwg-fetch';
 import 'custom-event-polyfill'
@@ -44,10 +45,15 @@ export async function bootstrap(props) {
 };
 
 export async function mount(props) {
-  console.log(props)
+  console.log(props);
+  actions.setActions(props);
+  props.onGlobalStateChange((state, prev) => {
+    console.log(state, prev)
+  })
   render(props)
 };
 
 export async function unmount(props) {
   instance.$destroy();
+  instance = null;
 };
