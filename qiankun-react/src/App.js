@@ -7,7 +7,7 @@ function App() {
   return (
     <Router basename="/react">
       <Link to="/">首页</Link>
-      <Link to="/about">关于页面</Link>
+      <Link to="/aboutReact">关于页面</Link>
       <Route
         path="/"
         exact
@@ -32,7 +32,7 @@ function App() {
           );
         }}
       ></Route>
-      <Route path="/about" render={() => <h1>我是关于页面</h1>}></Route>
+      <Route path="/aboutReact" render={() => <h1>我是关于页面</h1>}></Route>
     </Router>
   );
 }

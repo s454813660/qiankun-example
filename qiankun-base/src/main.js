@@ -23,7 +23,7 @@ const app = [
     name: 'vueapp',  // 应用的名字
     entry: '//localhost:10000',  // 默认会加载这个html，解析里面的js，动态的执行（子应用必须支持跨域） fetch
     container: '#vue',  // 容器名
-    activeRule: '#/vue',  // 激活的路径
+    activeRule: '/vue',  // 激活的路径
     props: {
       a: 1,
       getGlobalState: actions.getGlobalState
@@ -33,13 +33,13 @@ const app = [
     name: 'reactapp',
     entry: '//localhost:20000',  // 默认会加载这个html，解析里面的js，动态的执行（子应用必须支持跨域） fetch
     container: '#react',
-    activeRule: '#/react'
+    activeRule: '/react'
   },
   {
     name: 'webapp',
-    entry: '//127.0.0.1:3000/',  // 默认会加载这个html，解析里面的js，动态的执行（子应用必须支持跨域） fetch
+    entry: '//127.0.0.1:5500/qiankun-web/index.html',  // 默认会加载这个html，解析里面的js，动态的执行（子应用必须支持跨域） fetch
     container: '#web',
-    activeRule: '#/web',
+    activeRule: '/web',
     props: {
       a: 1,
       getGlobalState: actions.getGlobalState

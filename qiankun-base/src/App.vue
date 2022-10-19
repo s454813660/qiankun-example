@@ -4,7 +4,6 @@
       <!-- 基座中可以放自己的路由 -->
       <el-menu-item index="/">Home</el-menu-item>
       <el-menu-item index="/about">About</el-menu-item>
-      <el-menu-item index="/about/about1">About</el-menu-item>
       <!-- 引用其他子应用 -->
       <el-menu-item index="/vue">Vue应用</el-menu-item>
       <el-menu-item index="/react">React应用</el-menu-item>

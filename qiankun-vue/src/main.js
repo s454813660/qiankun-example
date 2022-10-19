@@ -5,16 +5,16 @@ import actions from './actions'
 import '@babel/polyfill';
 import 'whatwg-fetch';
 import 'custom-event-polyfill'
-import VueMindmap from 'vue-mindmap'
-// You need a specific loader for CSS files like https://github.com/webpack/css-loader
-import 'vue-mindmap/dist/vue-mindmap.css'
+// import VueMindmap from 'vue-mindmap'
+// // You need a specific loader for CSS files like https://github.com/webpack/css-loader
+// import 'vue-mindmap/dist/vue-mindmap.css'
 import 'element-ui/lib/theme-chalk/index.css';
 Vue.config.productionTip = false
 
 // import { Cascader, Checkbox, CheckboxGroup, Button, Dialog } from 'element-ui';
 import ElementUI from 'element-ui'
 
-Vue.use(VueMindmap).use(ElementUI)
+Vue.use(ElementUI)
     // .use(Cascader)
     // .use(Checkbox)
     // .use(CheckboxGroup)
